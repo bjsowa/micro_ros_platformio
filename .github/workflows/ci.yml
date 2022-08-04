@@ -70,8 +70,8 @@ jobs:
         run: |
           apt update
           export DEBIAN_FRONTEND=noninteractive
-          apt install -y wget unzip python3-pip expect xvfb libxrender1 libxtst6 libxi6
-          wget -O cubemx.zip $CUBEMX_LINK
+          apt install -y wget unzip python3-pip expect fontconfig xvfb libxrender1 libxtst6 libxi6
+          wget -q -O cubemx.zip $CUBEMX_LINK
           unzip -q cubemx.zip -d cubemx
           expect -f - <<EOF
           set timeout 30
