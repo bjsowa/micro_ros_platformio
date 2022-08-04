@@ -7,48 +7,48 @@ on:
       - "**"
 
 jobs:
-  micro_ros_platformio_arduino:
-    runs-on: ubuntu-20.04
-    container: ubuntu:20.04
+  # micro_ros_platformio_arduino:
+  #   runs-on: ubuntu-20.04
+  #   container: ubuntu:20.04
 
-    strategy:
-      fail-fast: false
-      matrix:
-        pio-environment:
-          - teensy41
-          - teensy41
-          - teensy40
-          - teensy36
-          - teensy35
-          - teensy31
-          - due
-          - zero
-          - olimex_e407
-          - esp32dev
-          - nanorp2040connect
-          - portenta_h7_m7
-          - teensy41_eth
-          - nanorp2040connect_wifi
-          - portenta_h7_m7_wifi
-          - esp32dev_wifi
-          - portenta_h7_m7_galactic
-          - portenta_h7_m7_foxy
-          - portenta_h7_m7_rolling
-          - teensy41_custom
-          - pico
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       pio-environment:
+  #         - teensy41
+  #         - teensy41
+  #         - teensy40
+  #         - teensy36
+  #         - teensy35
+  #         - teensy31
+  #         - due
+  #         - zero
+  #         - olimex_e407
+  #         - esp32dev
+  #         - nanorp2040connect
+  #         - portenta_h7_m7
+  #         - teensy41_eth
+  #         - nanorp2040connect_wifi
+  #         - portenta_h7_m7_wifi
+  #         - esp32dev_wifi
+  #         - portenta_h7_m7_galactic
+  #         - portenta_h7_m7_foxy
+  #         - portenta_h7_m7_rolling
+  #         - teensy41_custom
+  #         - pico
 
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          path: repo
-      - name: Install environment
-        uses: ./repo/.github/actions/platformio-env
-      - name: Build
-        shell: bash
-        run: |
-          export PATH=$PATH:~/.platformio/penv/bin
-          cd repo/ci/arduino
-          pio run -e ${{ matrix.pio-environment }}
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         path: repo
+  #     - name: Install environment
+  #       uses: ./repo/.github/actions/platformio-env
+  #     - name: Build
+  #       shell: bash
+  #       run: |
+  #         export PATH=$PATH:~/.platformio/penv/bin
+  #         cd repo/ci/arduino
+  #         pio run -e ${{ matrix.pio-environment }}
 
   micro_ros_platformio_stm32cube:
     runs-on: ubuntu-20.04
@@ -66,8 +66,7 @@ jobs:
           path: repo
       - name: Install STM32CubeMX
         env:
-          CUBEMX_LINK: https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/d2/a4/97/0d/5a/b2/43/2b/stm32cubemx-lin_v6-3-0/files/stm32cubemx-lin_v6-3-0.zip/jcr:content/translations/en.stm32cubemx-lin_v6-3-0.zip
-          # CUBEMX_LINK: https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/8c/64/99/4a/f8/b5/4f/79/stm32cubemx-lin/files/stm32cubemx-lin.zip/jcr:content/translations/en.stm32cubemx-lin.zip
+          CUBEMX_LINK: http://files.fictionlab.pl/en.stm32cubemx-lin_v6-3-0.zip
         run: |
           apt update
           export DEBIAN_FRONTEND=noninteractive
